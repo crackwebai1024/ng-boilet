@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -7,8 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  messageForm: FormGroup;
+  submitted = false;
+  success = false;
+  constructor(private formBuilder: FormBuilder) {
+    this.messageForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      message: ['', Validators.required],
+    });
+  };
 
+  onSubmit(){
+    this.submitted = true;
+
+    if(this.messageForm.invalid) {
+      // this.submitted = false ;
+      // this.success = false;
+      return;
+    }
+
+    this.success = true;
+  }
   ngOnInit(): void {
   }
 
