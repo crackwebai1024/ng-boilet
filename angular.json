@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngboilet"
+    }
+  },
+  "defaultProject": "ngboilet",
+  "cli": {
+    "analytics": false
+  }
 }
